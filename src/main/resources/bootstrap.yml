@@ -2,13 +2,18 @@ spring:
   application:
     name: config-server
   profiles:
-    active: native
+    active:
+      - native, git
 
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/config
+        git:
+          uri: https://github.com/jeonghyug/config-files.git
+          default-label: master
+          searchPaths: licensing-service # licensing-service/** ? ?? ??? ??
 
 server:
   port: 8081
